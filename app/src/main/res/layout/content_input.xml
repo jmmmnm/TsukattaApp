@@ -1,0 +1,130 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".InputActivity"
+    tools:showIn="@layout/activity_input">
+
+    <Button
+        android:id="@+id/date_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/times_button"
+        android:text="----/--/--"
+        style="@style/Widget.AppCompat.Button.Borderless" />
+    <Button
+        android:id="@+id/times_button"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="--:--"
+        style="@style/Widget.AppCompat.Button.Borderless" />
+
+    <EditText
+        android:id="@+id/payment_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_button"
+        android:hint="支払い方法" />
+
+    <EditText
+        android:id="@+id/price_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/payment_edit_text"
+        android:hint="金額" />
+
+
+    <Button
+        android:id="@+id/button_1"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_above="@id/button_4"
+        android:text="1" />
+    <Button
+        android:id="@+id/button_2"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_toEndOf="@id/button_1"
+        android:layout_alignTop="@id/button_1"
+        android:text="2" />
+    <Button
+        android:id="@+id/button_3"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_toEndOf="@id/button_2"
+        android:layout_alignTop="@id/button_1"
+        android:text="3" />
+
+    <Button
+        android:id="@+id/button_4"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_above="@id/button_7"
+        android:text="4" />
+    <Button
+        android:id="@+id/button_5"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_toEndOf="@id/button_4"
+        android:layout_alignTop="@id/button_4"
+        android:text="5" />
+    <Button
+        android:id="@+id/button_6"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_toEndOf="@id/button_5"
+        android:layout_alignTop="@id/button_4"
+        android:text="6" />
+
+    <Button
+        android:id="@+id/button_7"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_above="@id/button_camera"
+        android:text="7" />
+    <Button
+        android:id="@+id/button_8"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_toEndOf="@id/button_7"
+        android:layout_alignTop="@id/button_7"
+        android:text="8" />
+    <Button
+        android:id="@+id/button_9"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_toEndOf="@id/button_8"
+        android:layout_alignTop="@id/button_7"
+        android:text="9" />
+
+    <Button
+        android:id="@+id/button_camera"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_alignParentBottom="true"
+        android:text="カメラ" />
+    <Button
+        android:id="@+id/button_0"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_toEndOf="@id/button_camera"
+        android:layout_alignTop="@id/button_camera"
+        android:text="0" />
+    <Button
+        android:id="@+id/button_d"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_toEndOf="@id/button_0"
+        android:layout_alignTop="@id/button_camera"
+        android:text="del" />
+
+</RelativeLayout>
