@@ -7,9 +7,9 @@ import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
 open class Tsukatta : RealmObject(),Serializable {
+    var date: Date = Date()     //日時
     var payment: String = ""    //支払い
     var price: Int = 0          //値段
-    var date: Date = Date()     //日時
     var image: ByteArray? = null//画像
 
     // id をプライマリーキーとして設定

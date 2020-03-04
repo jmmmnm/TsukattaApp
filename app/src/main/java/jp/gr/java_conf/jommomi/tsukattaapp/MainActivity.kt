@@ -1,13 +1,15 @@
 package jp.gr.java_conf.jommomi.tsukattaapp
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
 import io.realm.RealmChangeListener
 import io.realm.Sort
-import java.util.*
+import android.content.Intent
+import android.support.v7.app.AlertDialog
+
+const val EXTRA_TSUKATTA = "jp.gr.java_conf.jommomi.tsukattaapp.TASK"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mRealm: Realm
@@ -24,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val intent = Intent(this@MainActivity, InputActivity::class.java)
+            startActivity(intent)
         }
 
         // Realmの設定
@@ -36,18 +38,42 @@ class MainActivity : AppCompatActivity() {
         mTsukattaAdaper = TsukattaAdapter(this@MainActivity)
 
         // ListViewをタップしたときの処理
-        listView1.setOnItemClickListener { parent, view, posiiton, id ->
-            //入力・編集する部面に遷移させる
+        listView1.setOnItemClickListener { parent, _, position, _ ->
+            // 入力・編集する画面に遷移させる
+            val tsukatta = parent.adapter.getItem(position) as Tsukatta
+            val intent = Intent(this@MainActivity, InputActivity::class.java)
+            intent.putExtra(EXTRA_TSUKATTA, tsukatta.id)
+            startActivity(intent)
         }
 
         // ListViewを長押ししたときの処理
-        listView1.setOnItemLongClickListener { parent, view, position, id ->
+        listView1.setOnItemLongClickListener { parent, _, position, _ ->
             // タスクを削除する
+            val tsukatta = parent.adapter.getItem(position) as Tsukatta
+
+            // ダイアログを表示する
+            val builder = AlertDialog.Builder(this@MainActivity)
+
+            builder.setTitle("削除")
+            builder.setMessage(tsukatta.payment + "を削除しますか")
+
+            builder.setPositiveButton("OK"){_, _ ->
+                val results = mRealm.where(Tsukatta::class.java).equalTo("id", tsukatta.id).findAll()
+
+                mRealm.beginTransaction()
+                results.deleteAllFromRealm()
+                mRealm.commitTransaction()
+
+                reloadListView()
+            }
+
+            builder.setNegativeButton("CANCEL", null)
+
+            val dialog = builder.create()
+            dialog.show()
+
             true
         }
-
-        // アプリ起動時に表示テスト用のタスクを作成する
-        addTsukattaForTest()
 
         reloadListView()
     }
@@ -70,17 +96,5 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
 
         mRealm.close()
-    }
-
-    private fun addTsukattaForTest() {
-        val tsukatta = Tsukatta()
-        tsukatta.payment = "支払い方法"
-        tsukatta.price = 0
-        tsukatta.date = Date()
-        tsukatta.image = null
-        tsukatta.id = 0
-        mRealm.beginTransaction()
-        mRealm.copyToRealmOrUpdate(tsukatta)
-        mRealm.commitTransaction()
     }
 }
