@@ -37,7 +37,7 @@ class TsukattaAdapter(context: Context) : BaseAdapter() {
         val textView2 = view.findViewById<TextView>(android.R.id.text2)
 
         textView1.text = tsukattaList[position].price.toString()
-        
+
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.JAPANESE)
         val date = tsukattaList[position].date
         textView2.text = simpleDateFormat.format(date)
