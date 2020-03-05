@@ -35,8 +35,8 @@
         android:layout_below="@id/button_date"
         android:hint="支払い方法" />
 
-    <EditText
-        android:id="@+id/price_edit_text"
+    <TextView
+        android:id="@+id/price_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/payment_edit_text"
@@ -120,11 +120,11 @@
         android:layout_alignTop="@id/button_camera"
         android:text="0" />
     <Button
-        android:id="@+id/button_d"
+        android:id="@+id/button_c"
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_toEndOf="@id/button_0"
         android:layout_alignTop="@id/button_camera"
-        android:text="del" />
+        android:text="c" />
 
 </RelativeLayout>

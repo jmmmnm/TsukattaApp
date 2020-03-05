@@ -8,6 +8,7 @@ import io.realm.RealmChangeListener
 import io.realm.Sort
 import android.content.Intent
 import android.support.v7.app.AlertDialog
+import kotlinx.android.synthetic.main.content_input.*
 
 const val EXTRA_TSUKATTA = "jp.gr.java_conf.jommomi.tsukattaapp.TASK"
 

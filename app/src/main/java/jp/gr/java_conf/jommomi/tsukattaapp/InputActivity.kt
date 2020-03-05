@@ -47,6 +47,9 @@ class InputActivity : AppCompatActivity() {
         finish()
     }
 
+    private var pStr:String = ""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_input)
@@ -62,6 +65,52 @@ class InputActivity : AppCompatActivity() {
         button_date.setOnClickListener(mOnDateClickListener)
         button_times.setOnClickListener(mOnTimeClickListener)
         button_camera.setOnClickListener(mOnDoneClickListener)
+
+
+        button_0.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}0"
+            pStr += "0"
+        }
+        button_1.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}1"
+            pStr += "1"
+        }
+        button_2.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}2"
+            pStr += "2"
+        }
+        button_3.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}3"
+            pStr += "3"
+        }
+        button_4.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}4"
+            pStr += "4"
+        }
+        button_5.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}5"
+            pStr += "5"
+        }
+        button_6.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}6"
+            pStr += "6"
+        }
+        button_7.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}7"
+            pStr += "7"
+        }
+        button_8.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}8"
+            pStr += "8"
+        }
+        button_9.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}9"
+            pStr += "9"
+        }
+        button_c.setOnClickListener(){
+            price_text_view.text = ""
+            pStr = ""
+        }
 
         // EXTRA_TSUKATTA から Tsukatta の id を取得して、 id から Tsukatta のインスタンスを取得する
         val intent = intent
@@ -87,7 +136,7 @@ class InputActivity : AppCompatActivity() {
         } else {
             // 更新の場合
             payment_edit_text.setText(mTsukatta!!.payment)
-            price_edit_text.setText(mTsukatta!!.price)
+            price_text_view.setText(mTsukatta!!.price)
 
             val calendar = Calendar.getInstance()
             calendar.time = mTsukatta!!.date
@@ -126,7 +175,7 @@ class InputActivity : AppCompatActivity() {
         }
 
         val payment = payment_edit_text.text.toString()
-        val price = price_edit_text.text.toString()
+        val price = price_text_view.text.toString()
 
         mTsukatta!!.payment = payment
         mTsukatta!!.price = price.toInt()
