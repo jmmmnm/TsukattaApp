@@ -78,6 +78,12 @@ class InputActivity : AppCompatActivity() {
             mDay = calendar.get(Calendar.DAY_OF_MONTH)
             mHour = calendar.get(Calendar.HOUR_OF_DAY)
             mMinute = calendar.get(Calendar.MINUTE)
+
+            val dateString = mYear.toString() + "/" + String.format("%02d", mMonth + 1) + "/" + String.format("%02d", mDay)
+            val timeString = String.format("%02d", mHour) + ":" + String.format("%02d", mMinute)
+
+            button_date.text = dateString
+            button_times.text = timeString
         } else {
             // 更新の場合
             payment_edit_text.setText(mTsukatta!!.payment)
