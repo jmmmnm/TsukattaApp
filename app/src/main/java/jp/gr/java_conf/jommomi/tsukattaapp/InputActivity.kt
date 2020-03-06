@@ -47,8 +47,8 @@ class InputActivity : AppCompatActivity() {
         finish()
     }
 
-    private var pStr:String = ""
-
+    private var payStr:String = ""
+    private var priStr:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,47 +69,47 @@ class InputActivity : AppCompatActivity() {
 
         button_0.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}0"
-            pStr += "0"
+            priStr += "0"
         }
         button_1.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}1"
-            pStr += "1"
+            priStr += "1"
         }
         button_2.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}2"
-            pStr += "2"
+            priStr += "2"
         }
         button_3.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}3"
-            pStr += "3"
+            priStr += "3"
         }
         button_4.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}4"
-            pStr += "4"
+            priStr += "4"
         }
         button_5.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}5"
-            pStr += "5"
+            priStr += "5"
         }
         button_6.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}6"
-            pStr += "6"
+            priStr += "6"
         }
         button_7.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}7"
-            pStr += "7"
+            priStr += "7"
         }
         button_8.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}8"
-            pStr += "8"
+            priStr += "8"
         }
         button_9.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}9"
-            pStr += "9"
+            priStr += "9"
         }
         button_c.setOnClickListener(){
             price_text_view.text = ""
-            pStr = ""
+            priStr = ""
         }
 
         // EXTRA_TSUKATTA から Tsukatta の id を取得して、 id から Tsukatta のインスタンスを取得する
