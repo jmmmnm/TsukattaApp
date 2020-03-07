@@ -28,8 +28,8 @@
         android:text="--:--"
         style="@style/Widget.AppCompat.Button.Borderless" />
 
-    <EditText
-        android:id="@+id/payment_edit_text"
+    <TextView
+        android:id="@+id/payment_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_date"
@@ -39,7 +39,7 @@
         android:id="@+id/price_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/payment_edit_text"
+        android:layout_below="@id/payment_text_view"
         android:hint="金額" />
 
 
@@ -111,7 +111,7 @@
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:text="カメラ" />
+        android:text="カメラ"/>
     <Button
         android:id="@+id/button_0"
         android:layout_width="108dp"

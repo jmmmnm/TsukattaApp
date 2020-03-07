@@ -47,6 +47,7 @@ class InputActivity : AppCompatActivity() {
         finish()
     }
 
+    private var bn:String = ""
     private var payStr:String = ""
     private var priStr:String = ""
 
@@ -66,51 +67,6 @@ class InputActivity : AppCompatActivity() {
         button_times.setOnClickListener(mOnTimeClickListener)
         button_camera.setOnClickListener(mOnDoneClickListener)
 
-
-        button_0.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}0"
-            priStr += "0"
-        }
-        button_1.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}1"
-            priStr += "1"
-        }
-        button_2.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}2"
-            priStr += "2"
-        }
-        button_3.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}3"
-            priStr += "3"
-        }
-        button_4.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}4"
-            priStr += "4"
-        }
-        button_5.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}5"
-            priStr += "5"
-        }
-        button_6.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}6"
-            priStr += "6"
-        }
-        button_7.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}7"
-            priStr += "7"
-        }
-        button_8.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}8"
-            priStr += "8"
-        }
-        button_9.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}9"
-            priStr += "9"
-        }
-        button_c.setOnClickListener(){
-            price_text_view.text = ""
-            priStr = ""
-        }
 
         // EXTRA_TSUKATTA から Tsukatta の id を取得して、 id から Tsukatta のインスタンスを取得する
         val intent = intent
@@ -135,7 +91,7 @@ class InputActivity : AppCompatActivity() {
             button_times.text = timeString
         } else {
             // 更新の場合
-            payment_edit_text.setText(mTsukatta!!.payment)
+            payment_text_view.setText(mTsukatta!!.payment)
             price_text_view.setText(mTsukatta!!.price)
 
             val calendar = Calendar.getInstance()
@@ -174,7 +130,7 @@ class InputActivity : AppCompatActivity() {
             mTsukatta!!.id = identifier
         }
 
-        val payment = payment_edit_text.text.toString()
+        val payment = payment_text_view.text.toString()
         val price = price_text_view.text.toString()
 
         mTsukatta!!.payment = payment
@@ -187,5 +143,115 @@ class InputActivity : AppCompatActivity() {
         realm.commitTransaction()
 
         realm.close()
+    }
+
+    private fun buttonHyouji() {
+        if(payStr==""){
+            button_1.text = "id"
+            button_2.text = "pasmo"
+            button_3.text = ""
+            button_4.text = "famipay"
+            button_5.text = "paypay"
+            button_6.text = ""
+            button_7.text = "dcard"
+            button_8.text = "ingfan"
+            button_9.text = "goldpoint"
+            button_0.text = ""
+
+            button_0.setOnClickListener(){
+                payment_text_view.text = ""
+                priStr += ""
+            }
+            button_1.setOnClickListener(){
+                payment_text_view.text = "id"
+                priStr+= "id"
+            }
+            button_2.setOnClickListener(){
+                payment_text_view.text = "pasmo"
+                priStr = "pasmo"
+            }
+            button_3.setOnClickListener(){
+                payment_text_view.text = ""
+                priStr = ""
+            }
+            button_4.setOnClickListener(){
+                payment_text_view.text = "famipay"
+                priStr = "famipay"
+            }
+            button_5.setOnClickListener(){
+                payment_text_view.text = "paypay"
+                priStr += "paypay"
+            }
+            button_6.setOnClickListener(){
+                payment_text_view.text = ""
+                priStr += ""
+            }
+            button_7.setOnClickListener(){
+                payment_text_view.text = "dcard"
+                priStr += "dcard"
+            }
+            button_8.setOnClickListener(){
+                payment_text_view.text = "ingfan"
+                priStr += "ingfan"
+            }
+            button_9.setOnClickListener() {
+                payment_text_view.text = "goldpoint"
+                priStr += "goldpoint"
+            }
+
+        }else {
+            button_1.text = "1"
+            button_2.text = "2"
+            button_3.text = "3"
+            button_4.text = "4"
+            button_5.text = "5"
+            button_6.text = "6"
+            button_7.text = "7"
+            button_8.text = "8"
+            button_9.text = "9"
+            button_0.text = "0"
+
+
+            button_0.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}0"
+                priStr += "0"
+            }
+            button_1.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}1"
+                priStr += "1"
+            }
+            button_2.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}2"
+                priStr += "2"
+            }
+            button_3.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}3"
+                priStr += "3"
+            }
+            button_4.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}4"
+                priStr += "4"
+            }
+            button_5.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}5"
+                priStr += "5"
+            }
+            button_6.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}6"
+                priStr += "6"
+            }
+            button_7.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}7"
+                priStr += "7"
+            }
+            button_8.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}8"
+                priStr += "8"
+            }
+            button_9.setOnClickListener(){
+                price_text_view.text = "${price_text_view.text}9"
+                priStr += "9"
+            }
+        }
     }
 }
