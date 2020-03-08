@@ -120,11 +120,95 @@
         android:layout_alignTop="@id/button_camera"
         android:text="0" />
     <Button
-        android:id="@+id/button_c"
+        android:id="@+id/button_del"
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_toEndOf="@id/button_0"
         android:layout_alignTop="@id/button_camera"
-        android:text="c" />
+        android:text="del" />
+
+
+    <Button
+        android:id="@+id/button_11"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_above="@id/button_14"
+        android:text="-" />
+    <Button
+        android:id="@+id/button_12"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_toEndOf="@id/button_11"
+        android:layout_alignTop="@id/button_11"
+        android:text="-" />
+    <Button
+        android:id="@+id/button_13"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_toEndOf="@id/button_12"
+        android:layout_alignTop="@id/button_11"
+        android:text="-" />
+
+    <Button
+        android:id="@+id/button_14"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_above="@id/button_17"
+        android:text="-" />
+    <Button
+        android:id="@+id/button_15"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_toEndOf="@id/button_14"
+        android:layout_alignTop="@id/button_14"
+        android:text="-" />
+    <Button
+        android:id="@+id/button_16"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_toEndOf="@id/button_15"
+        android:layout_alignTop="@id/button_14"
+        android:text="-" />
+
+    <Button
+        android:id="@+id/button_17"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_above="@id/button_next"
+        android:text="-" />
+    <Button
+        android:id="@+id/button_18"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_toEndOf="@id/button_17"
+        android:layout_alignTop="@id/button_17"
+        android:text="-" />
+    <Button
+        android:id="@+id/button_19"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_toEndOf="@id/button_18"
+        android:layout_alignTop="@id/button_17"
+        android:text="-" />
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:text="次へ" />
+    <Button
+        android:id="@+id/button_10"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_toEndOf="@id/button_next"
+        android:layout_alignTop="@id/button_next"
+        android:text="-" />
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_toEndOf="@id/button_10"
+        android:layout_alignTop="@id/button_next"
+        android:text="戻る" />
 
 </RelativeLayout>

@@ -47,7 +47,7 @@ class InputActivity : AppCompatActivity() {
         finish()
     }
 
-    private var bn:String = ""
+    private val payList = arrayOf("cash","id","pasmo","","famipay","paypay","","d_card","gold_point_card+","ing_fanV_card")
     private var payStr:String = ""
     private var priStr:String = ""
 
@@ -66,6 +66,135 @@ class InputActivity : AppCompatActivity() {
         button_date.setOnClickListener(mOnDateClickListener)
         button_times.setOnClickListener(mOnTimeClickListener)
         button_camera.setOnClickListener(mOnDoneClickListener)
+
+        buttonHyouji()
+        button_0.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}0"
+            priStr += "0"
+        }
+        button_1.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}1"
+            priStr += "1"
+        }
+        button_2.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}2"
+            priStr += "2"
+        }
+        button_3.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}3"
+            priStr += "3"
+        }
+        button_4.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}4"
+            priStr += "4"
+        }
+        button_5.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}5"
+            priStr += "5"
+        }
+        button_6.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}6"
+            priStr += "6"
+        }
+        button_7.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}7"
+            priStr += "7"
+        }
+        button_8.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}8"
+            priStr += "8"
+        }
+        button_9.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}9"
+            priStr += "9"
+        }
+        button_del.setOnClickListener(){
+            var tempStr = price_text_view.text.toString()
+            if (!tempStr.isEmpty()) {
+                price_text_view.text = tempStr.subSequence(0,tempStr.lastIndex)
+            }else{
+                payStr=""
+                payment_text_view.text =""
+                button_10.setVisibility(View.VISIBLE)
+                button_11.setVisibility(View.VISIBLE)
+                button_12.setVisibility(View.VISIBLE)
+                button_13.setVisibility(View.VISIBLE)
+                button_14.setVisibility(View.VISIBLE)
+                button_15.setVisibility(View.VISIBLE)
+                button_16.setVisibility(View.VISIBLE)
+                button_17.setVisibility(View.VISIBLE)
+                button_18.setVisibility(View.VISIBLE)
+                button_19.setVisibility(View.VISIBLE)
+                button_next.setVisibility(View.VISIBLE)
+                button_back.setVisibility(View.VISIBLE)
+            }
+            if (!priStr.isEmpty()) {
+                priStr = priStr.substring(0, priStr.lastIndex)
+            }
+        }
+
+
+        button_10.setOnClickListener() {
+            payment_text_view.text = payList[0]
+            payStr =payList[0]
+        }
+        button_11.setOnClickListener(){
+            payment_text_view.text = payList[1]
+            payStr = payList[1]
+        }
+        button_12.setOnClickListener(){
+            payment_text_view.text = payList[2]
+            payStr = payList[2]
+        }
+        button_13.setOnClickListener(){
+            payment_text_view.text = payList[3]
+            payStr = payList[3]
+        }
+        button_14.setOnClickListener(){
+            payment_text_view.text = payList[4]
+            payStr = payList[4]
+        }
+        button_15.setOnClickListener(){
+            payment_text_view.text = payList[5]
+            payStr = payList[5]
+        }
+        button_16.setOnClickListener(){
+            payment_text_view.text = payList[6]
+            payStr = payList[6]
+        }
+        button_17.setOnClickListener(){
+            payment_text_view.text = payList[7]
+            payStr = payList[7]
+        }
+        button_18.setOnClickListener(){
+            payment_text_view.text = payList[8]
+            payStr = payList[8]
+        }
+        button_19.setOnClickListener() {
+            payment_text_view.text = payList[9]
+            payStr = payList[9]
+        }
+        button_next.setOnClickListener() {
+            if(payStr!="") {
+                button_10.setVisibility(View.GONE)
+                button_11.setVisibility(View.GONE)
+                button_12.setVisibility(View.GONE)
+                button_13.setVisibility(View.GONE)
+                button_14.setVisibility(View.GONE)
+                button_15.setVisibility(View.GONE)
+                button_16.setVisibility(View.GONE)
+                button_17.setVisibility(View.GONE)
+                button_18.setVisibility(View.GONE)
+                button_19.setVisibility(View.GONE)
+                button_next.setVisibility(View.GONE)
+                button_back.setVisibility(View.GONE)
+            }
+        }
+        button_back.setOnClickListener() {
+            finish()
+        }
+
+
 
 
         // EXTRA_TSUKATTA から Tsukatta の id を取得して、 id から Tsukatta のインスタンスを取得する
@@ -146,112 +275,15 @@ class InputActivity : AppCompatActivity() {
     }
 
     private fun buttonHyouji() {
-        if(payStr==""){
-            button_1.text = "id"
-            button_2.text = "pasmo"
-            button_3.text = ""
-            button_4.text = "famipay"
-            button_5.text = "paypay"
-            button_6.text = ""
-            button_7.text = "dcard"
-            button_8.text = "ingfan"
-            button_9.text = "goldpoint"
-            button_0.text = ""
-
-            button_0.setOnClickListener(){
-                payment_text_view.text = ""
-                priStr += ""
-            }
-            button_1.setOnClickListener(){
-                payment_text_view.text = "id"
-                priStr+= "id"
-            }
-            button_2.setOnClickListener(){
-                payment_text_view.text = "pasmo"
-                priStr = "pasmo"
-            }
-            button_3.setOnClickListener(){
-                payment_text_view.text = ""
-                priStr = ""
-            }
-            button_4.setOnClickListener(){
-                payment_text_view.text = "famipay"
-                priStr = "famipay"
-            }
-            button_5.setOnClickListener(){
-                payment_text_view.text = "paypay"
-                priStr += "paypay"
-            }
-            button_6.setOnClickListener(){
-                payment_text_view.text = ""
-                priStr += ""
-            }
-            button_7.setOnClickListener(){
-                payment_text_view.text = "dcard"
-                priStr += "dcard"
-            }
-            button_8.setOnClickListener(){
-                payment_text_view.text = "ingfan"
-                priStr += "ingfan"
-            }
-            button_9.setOnClickListener() {
-                payment_text_view.text = "goldpoint"
-                priStr += "goldpoint"
-            }
-
-        }else {
-            button_1.text = "1"
-            button_2.text = "2"
-            button_3.text = "3"
-            button_4.text = "4"
-            button_5.text = "5"
-            button_6.text = "6"
-            button_7.text = "7"
-            button_8.text = "8"
-            button_9.text = "9"
-            button_0.text = "0"
-
-
-            button_0.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}0"
-                priStr += "0"
-            }
-            button_1.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}1"
-                priStr += "1"
-            }
-            button_2.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}2"
-                priStr += "2"
-            }
-            button_3.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}3"
-                priStr += "3"
-            }
-            button_4.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}4"
-                priStr += "4"
-            }
-            button_5.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}5"
-                priStr += "5"
-            }
-            button_6.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}6"
-                priStr += "6"
-            }
-            button_7.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}7"
-                priStr += "7"
-            }
-            button_8.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}8"
-                priStr += "8"
-            }
-            button_9.setOnClickListener(){
-                price_text_view.text = "${price_text_view.text}9"
-                priStr += "9"
-            }
-        }
+        button_10.text = payList[0]
+        button_11.text = payList[1]
+        button_12.text = payList[2]
+        button_13.text = payList[3]
+        button_14.text = payList[4]
+        button_15.text = payList[5]
+        button_16.text = payList[6]
+        button_17.text = payList[7]
+        button_18.text = payList[8]
+        button_19.text = payList[9]
     }
 }
