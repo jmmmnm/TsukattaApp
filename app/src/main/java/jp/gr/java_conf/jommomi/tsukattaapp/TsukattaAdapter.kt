@@ -31,18 +31,31 @@ class TsukattaAdapter(context: Context) : BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = convertView ?: mLayoutInflater.inflate(android.R.layout.simple_list_item_2, null)
 
-        val textView1 = view.findViewById<TextView>(android.R.id.text1)
-        val textView2 = view.findViewById<TextView>(android.R.id.text2)
+        var convertView = convertView
 
-        textView1.text = tsukattaList[position].price.toString()
+        if (convertView == null) {
+            convertView = mLayoutInflater.inflate(R.layout.list_tsukatta, parent, false)
+        }
 
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.JAPANESE)
-        val date = tsukattaList[position].date
-        textView2.text = simpleDateFormat.format(date)
+        val dateTextView = convertView!!.findViewById<View>(R.id.dateTextView) as TextView
+        dateTextView.text = tsukattaList[position].date.toString()
 
-        return view
+        val priceTextView = convertView.findViewById<View>(R.id.priceTextView) as TextView
+        priceTextView.text = tsukattaList[position].price.toString()
+
+        val paymentTextView = convertView.findViewById<View>(R.id.paymentTextView) as TextView
+        paymentTextView.text = tsukattaList[position].payment
+
+        val bytes = tsukattaList[position].imageBytes
+        if (bytes.isNotEmpty()) {
+            val image = BitmapFactory.decodeByteArray(bytes, 0, bytes.size).copy(Bitmap.Config.ARGB_8888, true)
+            val imageView = convertView.findViewById<View>(R.id.imageView) as ImageView
+            imageView.setImageBitmap(image)
+        }
+
+        return convertView
+
     }
 
 }
