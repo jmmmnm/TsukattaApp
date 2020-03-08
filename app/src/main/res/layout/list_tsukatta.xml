@@ -34,7 +34,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/priceTextView"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentRight="false"
+        android:layout_toEndOf="@id/imageView"
         android:text="payment"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

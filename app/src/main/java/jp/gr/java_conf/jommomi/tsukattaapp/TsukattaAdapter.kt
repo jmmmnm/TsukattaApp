@@ -9,7 +9,6 @@ import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class TsukattaAdapter(context: Context) : BaseAdapter() {
     private val mLayoutInflater: LayoutInflater
     var tsukattaList = mutableListOf<Tsukatta>()
@@ -39,7 +38,9 @@ class TsukattaAdapter(context: Context) : BaseAdapter() {
         }
 
         val dateTextView = convertView!!.findViewById<View>(R.id.dateTextView) as TextView
-        dateTextView.text = tsukattaList[position].date.toString()
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.JAPANESE)
+        val date = tsukattaList[position].date
+        dateTextView.text = simpleDateFormat.format(date)
 
         val priceTextView = convertView.findViewById<View>(R.id.priceTextView) as TextView
         priceTextView.text = tsukattaList[position].price.toString()
@@ -47,12 +48,7 @@ class TsukattaAdapter(context: Context) : BaseAdapter() {
         val paymentTextView = convertView.findViewById<View>(R.id.paymentTextView) as TextView
         paymentTextView.text = tsukattaList[position].payment
 
-        val bytes = tsukattaList[position].imageBytes
-        if (bytes.isNotEmpty()) {
-            val image = BitmapFactory.decodeByteArray(bytes, 0, bytes.size).copy(Bitmap.Config.ARGB_8888, true)
-            val imageView = convertView.findViewById<View>(R.id.imageView) as ImageView
-            imageView.setImageBitmap(image)
-        }
+
 
         return convertView
 
