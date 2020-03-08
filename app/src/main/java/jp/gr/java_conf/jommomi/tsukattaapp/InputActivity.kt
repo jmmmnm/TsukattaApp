@@ -63,11 +63,12 @@ class InputActivity : AppCompatActivity() {
         }
 
         // UI部品の設定
+        buttonHyouji()
+
         button_date.setOnClickListener(mOnDateClickListener)
         button_times.setOnClickListener(mOnTimeClickListener)
         button_camera.setOnClickListener(mOnDoneClickListener)
 
-        buttonHyouji()
         button_0.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}0"
             priStr += "0"
