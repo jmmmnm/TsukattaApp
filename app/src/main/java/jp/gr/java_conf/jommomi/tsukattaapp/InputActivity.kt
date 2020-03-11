@@ -67,12 +67,9 @@ class InputActivity : AppCompatActivity() {
 
         button_date.setOnClickListener(mOnDateClickListener)
         button_times.setOnClickListener(mOnTimeClickListener)
-        button_camera.setOnClickListener(mOnDoneClickListener)
 
-        button_0.setOnClickListener(){
-            price_text_view.text = "${price_text_view.text}0"
-            priStr += "0"
-        }
+
+
         button_1.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}1"
             priStr += "1"
@@ -109,87 +106,75 @@ class InputActivity : AppCompatActivity() {
             price_text_view.text = "${price_text_view.text}9"
             priStr += "9"
         }
+        button_add.setOnClickListener(){
+            addTsukatta()
+            finish()
+        }
+        button_10.setOnClickListener(){
+            price_text_view.text = "${price_text_view.text}0"
+            priStr += "0"
+        }
         button_del.setOnClickListener(){
-            var tempStr = price_text_view.text.toString()
-            if (!tempStr.isEmpty()) {
-                price_text_view.text = tempStr.subSequence(0,tempStr.lastIndex)
-            }else{
-                payStr=""
-                payment_text_view.text =""
-                button_10.setVisibility(View.VISIBLE)
-                button_11.setVisibility(View.VISIBLE)
-                button_12.setVisibility(View.VISIBLE)
-                button_13.setVisibility(View.VISIBLE)
-                button_14.setVisibility(View.VISIBLE)
-                button_15.setVisibility(View.VISIBLE)
-                button_16.setVisibility(View.VISIBLE)
-                button_17.setVisibility(View.VISIBLE)
-                button_18.setVisibility(View.VISIBLE)
-                button_19.setVisibility(View.VISIBLE)
-                button_next.setVisibility(View.VISIBLE)
-                button_back.setVisibility(View.VISIBLE)
-            }
-            if (!priStr.isEmpty()) {
-                priStr = priStr.substring(0, priStr.lastIndex)
-            }
+            payStr=""
+            payment_text_view.text =""
+            priStr=""
+            price_text_view.text=""
+            buttonHyouji()
         }
 
 
-        button_10.setOnClickListener() {
-            payment_text_view.text = payList[0]
-            payStr =payList[0]
-        }
         button_11.setOnClickListener(){
             payment_text_view.text = payList[1]
             payStr = payList[1]
+            buttonHyouji()
         }
         button_12.setOnClickListener(){
             payment_text_view.text = payList[2]
             payStr = payList[2]
+            buttonHyouji()
         }
         button_13.setOnClickListener(){
             payment_text_view.text = payList[3]
             payStr = payList[3]
+            buttonHyouji()
         }
         button_14.setOnClickListener(){
             payment_text_view.text = payList[4]
             payStr = payList[4]
+            buttonHyouji()
         }
         button_15.setOnClickListener(){
             payment_text_view.text = payList[5]
             payStr = payList[5]
+            buttonHyouji()
         }
         button_16.setOnClickListener(){
             payment_text_view.text = payList[6]
             payStr = payList[6]
+            buttonHyouji()
         }
         button_17.setOnClickListener(){
             payment_text_view.text = payList[7]
             payStr = payList[7]
+            buttonHyouji()
         }
         button_18.setOnClickListener(){
             payment_text_view.text = payList[8]
             payStr = payList[8]
+            buttonHyouji()
         }
         button_19.setOnClickListener() {
             payment_text_view.text = payList[9]
             payStr = payList[9]
+            buttonHyouji()
         }
-        button_next.setOnClickListener() {
-            if(payStr!="") {
-                button_10.setVisibility(View.GONE)
-                button_11.setVisibility(View.GONE)
-                button_12.setVisibility(View.GONE)
-                button_13.setVisibility(View.GONE)
-                button_14.setVisibility(View.GONE)
-                button_15.setVisibility(View.GONE)
-                button_16.setVisibility(View.GONE)
-                button_17.setVisibility(View.GONE)
-                button_18.setVisibility(View.GONE)
-                button_19.setVisibility(View.GONE)
-                button_next.setVisibility(View.GONE)
-                button_back.setVisibility(View.GONE)
-            }
+        button_non.setOnClickListener() {
+
+        }
+        button_20.setOnClickListener() {
+            payment_text_view.text = payList[0]
+            payStr =payList[0]
+            buttonHyouji()
         }
         button_back.setOnClickListener() {
             finish()
@@ -276,7 +261,7 @@ class InputActivity : AppCompatActivity() {
     }
 
     private fun buttonHyouji() {
-        button_10.text = payList[0]
+        if(payStr==""){
         button_11.text = payList[1]
         button_12.text = payList[2]
         button_13.text = payList[3]
@@ -286,5 +271,33 @@ class InputActivity : AppCompatActivity() {
         button_17.text = payList[7]
         button_18.text = payList[8]
         button_19.text = payList[9]
+        button_20.text = payList[0]
+
+        button_11.setVisibility(View.VISIBLE)
+        button_12.setVisibility(View.VISIBLE)
+        button_13.setVisibility(View.VISIBLE)
+        button_14.setVisibility(View.VISIBLE)
+        button_15.setVisibility(View.VISIBLE)
+        button_16.setVisibility(View.VISIBLE)
+        button_17.setVisibility(View.VISIBLE)
+        button_18.setVisibility(View.VISIBLE)
+        button_19.setVisibility(View.VISIBLE)
+        button_non.setVisibility(View.VISIBLE)
+        button_20.setVisibility(View.VISIBLE)
+        button_back.setVisibility(View.VISIBLE)
+        }else{
+            button_11.setVisibility(View.GONE)
+            button_12.setVisibility(View.GONE)
+            button_13.setVisibility(View.GONE)
+            button_14.setVisibility(View.GONE)
+            button_15.setVisibility(View.GONE)
+            button_16.setVisibility(View.GONE)
+            button_17.setVisibility(View.GONE)
+            button_18.setVisibility(View.GONE)
+            button_19.setVisibility(View.GONE)
+            button_non.setVisibility(View.GONE)
+            button_20.setVisibility(View.GONE)
+            button_back.setVisibility(View.GONE)
+        }
     }
 }
