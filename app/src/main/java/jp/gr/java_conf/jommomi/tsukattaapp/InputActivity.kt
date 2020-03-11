@@ -222,7 +222,7 @@ class InputActivity : AppCompatActivity() {
         } else {
             // 更新の場合
             payment_text_view.setText(mTsukatta!!.payment)
-            price_text_view.setText(mTsukatta!!.price)
+            price_text_view.setText(mTsukatta!!.price.toString())
 
             val calendar = Calendar.getInstance()
             calendar.time = mTsukatta!!.date
