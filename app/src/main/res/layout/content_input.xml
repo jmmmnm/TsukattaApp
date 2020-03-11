@@ -89,7 +89,7 @@
         android:id="@+id/button_7"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_above="@id/button_camera"
+        android:layout_above="@id/button_finish"
         android:text="7" />
     <Button
         android:id="@+id/button_8"
@@ -107,24 +107,24 @@
         android:text="9" />
 
     <Button
-        android:id="@+id/button_camera"
+        android:id="@+id/button_finish"
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:text="カメラ"/>
+        android:text="finish"/>
     <Button
-        android:id="@+id/button_0"
+        android:id="@+id/button_10"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_toEndOf="@id/button_camera"
-        android:layout_alignTop="@id/button_camera"
+        android:layout_toEndOf="@id/button_finish"
+        android:layout_alignTop="@id/button_finish"
         android:text="0" />
     <Button
         android:id="@+id/button_del"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_toEndOf="@id/button_0"
-        android:layout_alignTop="@id/button_camera"
+        android:layout_toEndOf="@id/button_10"
+        android:layout_alignTop="@id/button_finish"
         android:text="del" />
 
 
@@ -174,7 +174,7 @@
         android:id="@+id/button_17"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_above="@id/button_next"
+        android:layout_above="@id/button_non"
         android:text="-" />
     <Button
         android:id="@+id/button_18"
@@ -190,25 +190,26 @@
         android:layout_toEndOf="@id/button_18"
         android:layout_alignTop="@id/button_17"
         android:text="-" />
+
     <Button
-        android:id="@+id/button_next"
+        android:id="@+id/button_non"
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:text="次へ" />
+        android:text="non" />
     <Button
-        android:id="@+id/button_10"
+        android:id="@+id/button_20"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_toEndOf="@id/button_next"
-        android:layout_alignTop="@id/button_next"
+        android:layout_toEndOf="@id/button_non"
+        android:layout_alignTop="@id/button_non"
         android:text="-" />
     <Button
         android:id="@+id/button_back"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_toEndOf="@id/button_10"
-        android:layout_alignTop="@id/button_next"
+        android:layout_toEndOf="@id/button_20"
+        android:layout_alignTop="@id/button_non"
         android:text="戻る" />
 
 </RelativeLayout>
