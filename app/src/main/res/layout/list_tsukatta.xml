@@ -27,7 +27,7 @@
         android:layout_below="@id/dateTextView"
         android:layout_toEndOf="@+id/imageView"
         android:text="price"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
         android:id="@+id/paymentTextView"
@@ -37,7 +37,7 @@
         android:layout_alignParentRight="false"
         android:layout_toEndOf="@id/imageView"
         android:text="payment"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
 </RelativeLayout>

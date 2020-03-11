@@ -12,35 +12,48 @@
     tools:context=".InputActivity"
     tools:showIn="@layout/activity_input">
 
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/imageView"
+        android:layout_margin="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
     <Button
         android:id="@+id/button_date"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/button_times"
+        android:layout_toEndOf="@+id/imageView"
         android:text="----/--/--"
-        style="@style/Widget.AppCompat.Button.Borderless" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     <Button
         android:id="@+id/button_times"
-        android:layout_width="96dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/button_date"
         android:text="--:--"
-        style="@style/Widget.AppCompat.Button.Borderless" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
         android:id="@+id/payment_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_date"
-        android:hint="支払い方法" />
+        android:layout_below="@id/button_times"
+        android:layout_margin="6dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:hint="支払い方法"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
         android:id="@+id/price_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/payment_text_view"
-        android:hint="金額" />
+        android:layout_margin="6dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:hint="金額"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
     <Button
@@ -89,7 +102,7 @@
         android:id="@+id/button_7"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_above="@id/button_camera"
+        android:layout_above="@id/button_add"
         android:text="7" />
     <Button
         android:id="@+id/button_8"
@@ -107,24 +120,24 @@
         android:text="9" />
 
     <Button
-        android:id="@+id/button_camera"
+        android:id="@+id/button_add"
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:text="カメラ"/>
+        android:text="add"/>
     <Button
-        android:id="@+id/button_0"
+        android:id="@+id/button_10"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_toEndOf="@id/button_camera"
-        android:layout_alignTop="@id/button_camera"
+        android:layout_toEndOf="@id/button_add"
+        android:layout_alignTop="@id/button_add"
         android:text="0" />
     <Button
         android:id="@+id/button_del"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_toEndOf="@id/button_0"
-        android:layout_alignTop="@id/button_camera"
+        android:layout_toEndOf="@id/button_10"
+        android:layout_alignTop="@id/button_add"
         android:text="del" />
 
 
@@ -174,7 +187,7 @@
         android:id="@+id/button_17"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_above="@id/button_next"
+        android:layout_above="@id/button_non"
         android:text="-" />
     <Button
         android:id="@+id/button_18"
@@ -190,25 +203,26 @@
         android:layout_toEndOf="@id/button_18"
         android:layout_alignTop="@id/button_17"
         android:text="-" />
+
     <Button
-        android:id="@+id/button_next"
+        android:id="@+id/button_non"
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:text="次へ" />
+        android:text="non" />
     <Button
-        android:id="@+id/button_10"
+        android:id="@+id/button_20"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_toEndOf="@id/button_next"
-        android:layout_alignTop="@id/button_next"
+        android:layout_toEndOf="@id/button_non"
+        android:layout_alignTop="@id/button_non"
         android:text="-" />
     <Button
         android:id="@+id/button_back"
         android:layout_width="108dp"
         android:layout_height="64dp"
-        android:layout_toEndOf="@id/button_10"
-        android:layout_alignTop="@id/button_next"
+        android:layout_toEndOf="@id/button_20"
+        android:layout_alignTop="@id/button_non"
         android:text="戻る" />
 
 </RelativeLayout>
