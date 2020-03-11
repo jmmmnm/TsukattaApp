@@ -1,9 +1,16 @@
 package jp.gr.java_conf.jommomi.tsukattaapp
 
+import android.Manifest
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.ContentValues
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v7.widget.Toolbar
 import android.view.View
 import io.realm.Realm
@@ -11,6 +18,12 @@ import kotlinx.android.synthetic.main.content_input.*
 import java.util.*
 
 class InputActivity : AppCompatActivity() {
+    companion object {
+        private val PERMISSIONS_REQUEST_CODE = 100
+        private val CHOOSER_REQUEST_CODE = 100
+    }
+
+    private var mPictureUri: Uri? = null
 
     private var mYear = 0
     private var mMonth = 0
@@ -42,10 +55,7 @@ class InputActivity : AppCompatActivity() {
         timePickerDialog.show()
     }
 
-    private val mOnDoneClickListener = View.OnClickListener {
-        addTsukatta()
-        finish()
-    }
+
 
     private val payList = arrayOf("cash","id","pasmo","","famipay","paypay","","d_card","gold_point_card+","ing_fanV_card")
     private var payStr:String = ""
@@ -68,7 +78,20 @@ class InputActivity : AppCompatActivity() {
         button_date.setOnClickListener(mOnDateClickListener)
         button_times.setOnClickListener(mOnTimeClickListener)
 
-
+        imageView.setOnClickListener(){
+            // パーミッションの許可状態を確認する
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    // 許可されている
+                    showChooser()
+                } else {
+                    // 許可されていないので許可ダイアログを表示する
+                    requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), PERMISSIONS_REQUEST_CODE)
+                }
+            } else {
+                showChooser()
+            }
+        }
 
         button_1.setOnClickListener(){
             price_text_view.text = "${price_text_view.text}1"
@@ -258,6 +281,32 @@ class InputActivity : AppCompatActivity() {
         realm.commitTransaction()
 
         realm.close()
+    }
+
+    private fun showChooser() {
+        // ギャラリーから選択するIntent
+        val galleryIntent = Intent(Intent.ACTION_GET_CONTENT)
+        galleryIntent.type = "image/*"
+        galleryIntent.addCategory(Intent.CATEGORY_OPENABLE)
+
+        // カメラで撮影するIntent
+        val filename = System.currentTimeMillis().toString() + ".jpg"
+        val values = ContentValues()
+        values.put(MediaStore.Images.Media.TITLE, filename)
+        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+        mPictureUri = contentResolver
+            .insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, mPictureUri)
+
+        // ギャラリー選択のIntentを与えてcreateChooserメソッドを呼ぶ
+        val chooserIntent = Intent.createChooser(galleryIntent, "画像を取得")
+
+        // EXTRA_INITIAL_INTENTS にカメラ撮影のIntentを追加
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(cameraIntent))
+
+        startActivityForResult(chooserIntent, CHOOSER_REQUEST_CODE)
     }
 
     private fun buttonHyouji() {
