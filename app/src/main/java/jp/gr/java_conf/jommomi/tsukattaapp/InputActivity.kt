@@ -1,11 +1,15 @@
 package jp.gr.java_conf.jommomi.tsukattaapp
 
 import android.Manifest
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.net.Uri
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
@@ -307,6 +311,48 @@ class InputActivity : AppCompatActivity() {
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(cameraIntent))
 
         startActivityForResult(chooserIntent, CHOOSER_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == CHOOSER_REQUEST_CODE) {
+
+            if (resultCode != Activity.RESULT_OK) {
+                if (mPictureUri != null) {
+                    contentResolver.delete(mPictureUri!!, null, null)
+                    mPictureUri = null
+                }
+                return
+            }
+
+            // 画像を取得
+            val uri = if (data == null || data.data == null) mPictureUri else data.data
+
+            // URIからBitmapを取得する
+            val image: Bitmap
+            try {
+                val contentResolver = contentResolver
+                val inputStream = contentResolver.openInputStream(uri!!)
+                image = BitmapFactory.decodeStream(inputStream)
+                inputStream!!.close()
+            } catch (e: Exception) {
+                return
+            }
+
+            // 取得したBimapの長辺を500ピクセルにリサイズする
+            val imageWidth = image.width
+            val imageHeight = image.height
+            val scale = Math.min(120.toFloat() / imageWidth, 120.toFloat() / imageHeight) // (1)
+
+            val matrix = Matrix()
+            matrix.postScale(scale, scale)
+
+            val resizedImage = Bitmap.createBitmap(image, 0, 0, imageWidth, imageHeight, matrix, true)
+
+            // BitmapをImageViewに設定する
+            imageView.setImageBitmap(resizedImage)
+
+            mPictureUri = null
+        }
     }
 
     private fun buttonHyouji() {
