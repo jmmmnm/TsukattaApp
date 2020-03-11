@@ -168,7 +168,7 @@ class InputActivity : AppCompatActivity() {
             buttonHyouji()
         }
         button_back.setOnClickListener() {
-
+            finish()
         }
 
 
