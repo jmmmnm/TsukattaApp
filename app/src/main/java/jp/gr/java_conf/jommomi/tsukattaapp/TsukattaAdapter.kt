@@ -1,10 +1,13 @@
 package jp.gr.java_conf.jommomi.tsukattaapp
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.*
@@ -48,6 +51,12 @@ class TsukattaAdapter(context: Context) : BaseAdapter() {
         val paymentTextView = convertView.findViewById<View>(R.id.paymentTextView) as TextView
         paymentTextView.text = tsukattaList[position].payment
 
+        val bytes = tsukattaList[position].image
+        if (bytes != null && bytes!!.isNotEmpty()) {
+            val image = BitmapFactory.decodeByteArray(bytes, 0, bytes.size).copy(Bitmap.Config.ARGB_8888, true)
+            val imageView = convertView.findViewById<View>(R.id.imageView) as ImageView
+            imageView.setImageBitmap(image)
+        }
 
 
         return convertView

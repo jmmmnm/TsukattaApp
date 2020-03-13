@@ -17,8 +17,12 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.widget.Toolbar
 import android.view.View
+import android.widget.ImageView
 import io.realm.Realm
 import kotlinx.android.synthetic.main.content_input.*
+import kotlinx.android.synthetic.main.content_input.imageView
+import kotlinx.android.synthetic.main.list_tsukatta.*
+import java.io.ByteArrayOutputStream
 import java.util.*
 
 class InputActivity : AppCompatActivity() {
@@ -26,7 +30,7 @@ class InputActivity : AppCompatActivity() {
         private val PERMISSIONS_REQUEST_CODE = 100
         private val CHOOSER_REQUEST_CODE = 100
     }
-
+    private var imageV:ByteArray?= null
     private var mPictureUri: Uri? = null
 
     private var mYear = 0
@@ -280,6 +284,7 @@ class InputActivity : AppCompatActivity() {
         val calendar = GregorianCalendar(mYear, mMonth, mDay, mHour, mMinute)
         val date = calendar.time
         mTsukatta!!.date = date
+        mTsukatta!!.image = imageV
 
         realm.copyToRealmOrUpdate(mTsukatta!!)
         realm.commitTransaction()
@@ -346,13 +351,22 @@ class InputActivity : AppCompatActivity() {
             val matrix = Matrix()
             matrix.postScale(scale, scale)
 
+
             val resizedImage = Bitmap.createBitmap(image, 0, 0, imageWidth, imageHeight, matrix, true)
 
             // BitmapをImageViewに設定する
             imageView.setImageBitmap(resizedImage)
 
+            imageV= BitmapToByte(resizedImage)
+
             mPictureUri = null
         }
+    }
+
+     fun BitmapToByte(bmp:Bitmap):ByteArray{
+        val stream = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        return stream.toByteArray()
     }
 
     private fun buttonHyouji() {
