@@ -210,20 +210,20 @@
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:text="" />
+        android:text="とうろく" />
     <Button
         android:id="@+id/button_20"
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_toEndOf="@id/button_non"
         android:layout_alignTop="@id/button_non"
-        android:text="-" />
+        android:text="現金" />
     <Button
         android:id="@+id/button_back"
         android:layout_width="108dp"
         android:layout_height="64dp"
         android:layout_toEndOf="@id/button_20"
         android:layout_alignTop="@id/button_non"
-        android:text="back" />
+        android:text="もどる" />
 
 </RelativeLayout>

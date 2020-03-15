@@ -65,7 +65,7 @@ class InputActivity : AppCompatActivity() {
 
 
 
-    private val payList = arrayOf("cash","id","pasmo","","famipay","paypay","","d_card","gold_point_card+","ing_fanV_card")
+    private val payList = arrayOf("","id","pasmo","","famipay","paypay","","d_card","gold_point_card+","ing_fanV_card")
     private var payStr:String = ""
     private var priStr:String = ""
 
@@ -203,8 +203,8 @@ class InputActivity : AppCompatActivity() {
 
         }
         button_20.setOnClickListener() {
-            payment_text_view.text = payList[0]
-            payStr =payList[0]
+            payment_text_view.text = "現金"
+            payStr ="現金"
             buttonHyouji()
         }
         button_back.setOnClickListener() {
@@ -240,6 +240,12 @@ class InputActivity : AppCompatActivity() {
             payment_text_view.setText(mTsukatta!!.payment)
             price_text_view.setText(mTsukatta!!.price.toString())
 
+            val bytes = mTsukatta!!.image
+            if (bytes != null && bytes!!.isNotEmpty()) {
+                val image = BitmapFactory.decodeByteArray(bytes, 0, bytes.size).copy(Bitmap.Config.ARGB_8888, true)
+                imageView.setImageBitmap(image)
+            }
+
             val calendar = Calendar.getInstance()
             calendar.time = mTsukatta!!.date
             mYear = calendar.get(Calendar.YEAR)
@@ -253,6 +259,8 @@ class InputActivity : AppCompatActivity() {
 
             button_date.text = dateString
             button_times.text = timeString
+
+
         }
     }
 
@@ -380,7 +388,6 @@ class InputActivity : AppCompatActivity() {
         button_17.text = payList[7]
         button_18.text = payList[8]
         button_19.text = payList[9]
-        button_20.text = payList[0]
 
         button_11.setVisibility(View.VISIBLE)
         button_12.setVisibility(View.VISIBLE)
