@@ -223,6 +223,7 @@ class InputActivity : AppCompatActivity() {
 
         if (mTsukatta == null) {
             // 新規作成の場合
+            supportActionBar?.title = "追加"
             val calendar = Calendar.getInstance()
             mYear = calendar.get(Calendar.YEAR)
             mMonth = calendar.get(Calendar.MONTH)
@@ -237,6 +238,7 @@ class InputActivity : AppCompatActivity() {
             button_times.text = timeString
         } else {
             // 更新の場合
+            supportActionBar?.title = "変更"
             payment_text_view.setText(mTsukatta!!.payment)
             price_text_view.setText(mTsukatta!!.price.toString())
 
