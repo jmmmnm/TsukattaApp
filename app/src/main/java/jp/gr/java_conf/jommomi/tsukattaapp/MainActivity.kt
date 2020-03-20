@@ -8,6 +8,7 @@ import io.realm.RealmChangeListener
 import io.realm.Sort
 import android.content.Intent
 import android.support.v7.app.AlertDialog
+import android.view.Menu
 import kotlinx.android.synthetic.main.content_input.*
 
 const val EXTRA_TSUKATTA = "jp.gr.java_conf.jommomi.tsukattaapp.TASK"
@@ -97,5 +98,11 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
 
         mRealm.close()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
     }
 }
