@@ -40,12 +40,12 @@
     <item
         android:id="@+id/payList_8"
         android:orderInCategory="800"
-        android:title="gold_point"
+        android:title="ing_fan"
         app:showAsAction="never" />
     <item
         android:id="@+id/payList_9"
         android:orderInCategory="900"
-        android:title="ing_fan"
+        android:title="-"
         app:showAsAction="never" />
 
 </menu>
