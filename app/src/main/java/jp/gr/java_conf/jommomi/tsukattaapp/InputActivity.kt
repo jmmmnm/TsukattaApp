@@ -65,7 +65,7 @@ class InputActivity : AppCompatActivity() {
 
 
 
-    private val payList = arrayOf("","id","pasmo","","famipay","paypay","","d_card","gold_point_card+","ing_fanV_card")
+    private val payList = arrayOf("","pasmo","id","-","famipay","paypay","-","d_card","ing_fan","gold_point")
     private var payStr:String = ""
     private var priStr:String = ""
 
