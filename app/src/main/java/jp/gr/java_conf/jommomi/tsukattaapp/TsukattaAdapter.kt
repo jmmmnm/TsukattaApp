@@ -45,11 +45,11 @@ class TsukattaAdapter(context: Context) : BaseAdapter() {
         val date = tsukattaList[position].date
         dateTextView.text = simpleDateFormat.format(date)
 
-        val priceTextView = convertView.findViewById<View>(R.id.priceTextView) as TextView
-        priceTextView.text = tsukattaList[position].price.toString()
-
         val paymentTextView = convertView.findViewById<View>(R.id.paymentTextView) as TextView
         paymentTextView.text = tsukattaList[position].payment
+
+        val priceTextView = convertView.findViewById<View>(R.id.priceTextView) as TextView
+        priceTextView.text = tsukattaList[position].price.toString()
 
         val bytes = tsukattaList[position].image
         if (bytes != null && bytes!!.isNotEmpty()) {

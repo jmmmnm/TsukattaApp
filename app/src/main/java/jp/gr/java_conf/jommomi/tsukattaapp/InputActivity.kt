@@ -260,6 +260,8 @@ class InputActivity : AppCompatActivity() {
             button_date.text = dateString
             button_times.text = timeString
 
+            imageV=bytes
+
         }
     }
 
