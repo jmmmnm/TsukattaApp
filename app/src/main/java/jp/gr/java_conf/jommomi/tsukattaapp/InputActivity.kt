@@ -46,7 +46,7 @@ class InputActivity : AppCompatActivity() {
                 mYear = year
                 mMonth = month
                 mDay = dayOfMonth
-                val dateString = mYear.toString() + "/" + String.format("%02d", mMonth + 1) + "/" + String.format("%02d", mDay)
+                val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
                 button_date.text = dateString
             }, mYear, mMonth, mDay)
         datePickerDialog.show()
@@ -212,8 +212,6 @@ class InputActivity : AppCompatActivity() {
         }
 
 
-
-
         // EXTRA_TSUKATTA から Tsukatta の id を取得して、 id から Tsukatta のインスタンスを取得する
         val intent = intent
         val tsukattaId = intent.getIntExtra(EXTRA_TSUKATTA, -1)
@@ -231,7 +229,7 @@ class InputActivity : AppCompatActivity() {
             mHour = calendar.get(Calendar.HOUR_OF_DAY)
             mMinute = calendar.get(Calendar.MINUTE)
 
-            val dateString = mYear.toString() + "/" + String.format("%02d", mMonth + 1) + "/" + String.format("%02d", mDay)
+            val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
             val timeString = String.format("%02d", mHour) + ":" + String.format("%02d", mMinute)
 
             button_date.text = dateString
@@ -256,12 +254,11 @@ class InputActivity : AppCompatActivity() {
             mHour = calendar.get(Calendar.HOUR_OF_DAY)
             mMinute = calendar.get(Calendar.MINUTE)
 
-            val dateString = mYear.toString() + "/" + String.format("%02d", mMonth + 1) + "/" + String.format("%02d", mDay)
+            val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
             val timeString = String.format("%02d", mHour) + ":" + String.format("%02d", mMinute)
 
             button_date.text = dateString
             button_times.text = timeString
-
 
         }
     }
@@ -294,6 +291,7 @@ class InputActivity : AppCompatActivity() {
         val calendar = GregorianCalendar(mYear, mMonth, mDay, mHour, mMinute)
         val date = calendar.time
         mTsukatta!!.date = date
+        mTsukatta!!.day = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
         mTsukatta!!.image = imageV
 
         realm.copyToRealmOrUpdate(mTsukatta!!)

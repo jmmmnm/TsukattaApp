@@ -8,8 +8,10 @@ import io.realm.RealmChangeListener
 import io.realm.Sort
 import android.content.Intent
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import android.view.Menu
 import kotlinx.android.synthetic.main.content_input.*
+import java.util.*
 
 const val EXTRA_TSUKATTA = "jp.gr.java_conf.jommomi.tsukattaapp.TASK"
 
@@ -20,8 +22,8 @@ class MainActivity : AppCompatActivity() {
             reloadListView()
         }
     }
-
     private  lateinit var mTsukattaAdaper: TsukattaAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, InputActivity::class.java)
             startActivity(intent)
         }
+
+        var calendar = Calendar.getInstance()
+        var mYear = calendar.get(Calendar.YEAR)
+        var mMonth = calendar.get(Calendar.MONTH)
+        var mDay = calendar.get(Calendar.DAY_OF_MONTH)
+        supportActionBar?.title = " "+mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
 
         // Realmの設定
         mRealm = Realm.getDefaultInstance()
@@ -83,6 +91,8 @@ class MainActivity : AppCompatActivity() {
     private fun reloadListView() {
         // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
         val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).findAll().sort("date", Sort.DESCENDING)
+
+        Log.d("kotlintest",tsukattaRealmResults.toString())
 
         // 上記の結果を、TsukattaList としてセットする
         mTsukattaAdaper.tsukattaList = mRealm.copyFromRealm(tsukattaRealmResults)
