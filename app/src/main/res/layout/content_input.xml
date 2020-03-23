@@ -19,7 +19,7 @@
         android:layout_margin="2dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:background="#d3d3d3"/>
+        android:background="#ffffff"/>
 
     <Button
         android:id="@+id/button_date"
