@@ -25,6 +25,12 @@ class MainActivity : AppCompatActivity() {
     private  lateinit var mTsukattaAdaper: TsukattaAdapter
 
 
+    var calendar = Calendar.getInstance()
+    var mYear = calendar.get(Calendar.YEAR)
+    var mMonth = calendar.get(Calendar.MONTH)
+    var mDay = calendar.get(Calendar.DAY_OF_MONTH)
+    var today:String =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,12 +39,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, InputActivity::class.java)
             startActivity(intent)
         }
-
-        var calendar = Calendar.getInstance()
-        var mYear = calendar.get(Calendar.YEAR)
-        var mMonth = calendar.get(Calendar.MONTH)
-        var mDay = calendar.get(Calendar.DAY_OF_MONTH)
-        supportActionBar?.title = " "+mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
 
         // Realmの設定
         mRealm = Realm.getDefaultInstance()
@@ -86,13 +86,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         reloadListView()
+        reTitle()
     }
 
     private fun reloadListView() {
         // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
         val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).findAll().sort("date", Sort.DESCENDING)
-
-        Log.d("kotlintest",tsukattaRealmResults.toString())
 
         // 上記の結果を、TsukattaList としてセットする
         mTsukattaAdaper.tsukattaList = mRealm.copyFromRealm(tsukattaRealmResults)
@@ -102,6 +101,19 @@ class MainActivity : AppCompatActivity() {
 
         // 表示を更新するために、アダプターにデータが変更されたことを知らせる
         mTsukattaAdaper.notifyDataSetChanged()
+    }
+
+    private fun reTitle() {
+
+        var kyoTsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo("day", today).findAll()
+        var kyoTsukattaArray: Array<Tsukatta>?
+        kyoTsukattaArray = kyoTsukattaRealmResults.toTypedArray()
+        var kyoTsukatta:Int=0
+
+        for(i in kyoTsukattaArray.indices){
+            kyoTsukatta=kyoTsukatta+kyoTsukattaArray[i].price
+        }
+        supportActionBar?.title = "きょうは "+kyoTsukatta+"円つかった"
     }
 
     override fun onDestroy() {
