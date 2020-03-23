@@ -1,55 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:layout_height="match_parent">
     tools:context=".MainActivity">
 
     <ListView
         android:layout_marginTop="60dp"
-        android:layout_below="@id/dateTextView"
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <Button
-        android:id="@+id/kyo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|left"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:text="きょう" />
 
     <Button
         android:id="@+id/kino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_gravity="center|top"
+        android:layout_gravity="top|left"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="きのう" />
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="昨日" />
+
 
     <Button
         android:id="@+id/ototoi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|top"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="16dp"
-        android:text="おととい" />
+        android:layout_margin="4dp"
+        android:layout_toEndOf="@id/kino"
+        android:text="一昨日" />
 
+    <Button
+        android:id="@+id/konshu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_toEndOf="@id/ototoi"
+        android:text="今週" />
+
+    <Button
+        android:id="@+id/senshu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_toEndOf="@id/konshu"
+        android:text="先週" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/plus"
-        app:backgroundTint="@color/colorPrimary"/>
+        app:backgroundTint="@color/colorPrimary" />
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

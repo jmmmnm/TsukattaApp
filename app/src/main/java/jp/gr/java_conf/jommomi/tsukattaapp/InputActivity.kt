@@ -238,7 +238,7 @@ class InputActivity : AppCompatActivity() {
             // 更新の場合
             supportActionBar?.title = "変更"
             payment_text_view.setText(mTsukatta!!.payment)
-            price_text_view.setText(mTsukatta!!.price.toString())
+            price_text_view.setText(mTsukatta!!.price.toString()+" 円")
 
             val bytes = mTsukatta!!.image
             if (bytes != null && bytes!!.isNotEmpty()) {
