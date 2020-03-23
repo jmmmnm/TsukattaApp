@@ -49,7 +49,7 @@ class TsukattaAdapter(context: Context) : BaseAdapter() {
         paymentTextView.text = tsukattaList[position].payment
 
         val priceTextView = convertView.findViewById<View>(R.id.priceTextView) as TextView
-        priceTextView.text = tsukattaList[position].price.toString()
+        priceTextView.text = tsukattaList[position].price.toString()+" 円"
 
         val bytes = tsukattaList[position].image
         if (bytes != null && bytes!!.isNotEmpty()) {
