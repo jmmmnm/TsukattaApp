@@ -89,6 +89,12 @@ class MainActivity : AppCompatActivity() {
         reTitle()
     }
 
+
+    override fun onRestart() {
+        super.onRestart()
+        reTitle()
+    }
+
     private fun reloadListView() {
         // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
         val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).findAll().sort("date", Sort.DESCENDING)
