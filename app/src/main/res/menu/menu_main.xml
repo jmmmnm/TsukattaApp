@@ -5,47 +5,32 @@
     <item
         android:id="@+id/payList_1"
         android:orderInCategory="100"
-        android:title="pasmo"
+        android:title="id"
         app:showAsAction="never" />
     <item
         android:id="@+id/payList_2"
         android:orderInCategory="200"
-        android:title="id"
+        android:title="pasmo"
         app:showAsAction="never" />
     <item
         android:id="@+id/payList_3"
         android:orderInCategory="300"
-        android:title="-"
+        android:title="famipay"
         app:showAsAction="never" />
     <item
         android:id="@+id/payList_4"
         android:orderInCategory="400"
-        android:title="famipay"
+        android:title="paypay"
         app:showAsAction="never" />
     <item
         android:id="@+id/payList_5"
         android:orderInCategory="500"
-        android:title="paypay"
+        android:title="dcard"
         app:showAsAction="never" />
     <item
         android:id="@+id/payList_6"
         android:orderInCategory="600"
-        android:title="-"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/payList_7"
-        android:orderInCategory="700"
-        android:title="d_card"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/payList_8"
-        android:orderInCategory="800"
-        android:title="ing_fan"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/payList_9"
-        android:orderInCategory="900"
-        android:title="-"
+        android:title="ingfan"
         app:showAsAction="never" />
 
 </menu>
