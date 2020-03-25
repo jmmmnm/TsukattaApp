@@ -207,9 +207,6 @@ class InputActivity : AppCompatActivity() {
             mDate = calendar.get(Calendar.DAY_OF_MONTH)
             mHour = calendar.get(Calendar.HOUR_OF_DAY)
             mMinute = calendar.get(Calendar.MINUTE)
-            mDays =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
-            mWeeks = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
-
 
             val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
             val timeString = String.format("%02d", mHour) + ":" + String.format("%02d", mMinute)
@@ -235,9 +232,6 @@ class InputActivity : AppCompatActivity() {
             mDate = calendar.get(Calendar.DAY_OF_MONTH)
             mHour = calendar.get(Calendar.HOUR_OF_DAY)
             mMinute = calendar.get(Calendar.MINUTE)
-            mDays =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
-            mWeeks = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
-
 
             val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
             val timeString = String.format("%02d", mHour) + ":" + String.format("%02d", mMinute)
@@ -278,6 +272,10 @@ class InputActivity : AppCompatActivity() {
         val calendar = GregorianCalendar(mYear, mMonth, mDate, mHour, mMinute)
         val date = calendar.time
         mTsukatta!!.date = date
+
+        mDays =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
+        mWeeks = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
+
         mTsukatta!!.days = mDays
         mTsukatta!!.weeks = mWeeks
         mTsukatta!!.comment = mComment
