@@ -11,42 +11,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-
-    <Button
-        android:id="@+id/kino"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|left"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="4dp"
-        android:text="昨日" />
-
-
-    <Button
-        android:id="@+id/ototoi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:layout_toEndOf="@id/kino"
-        android:text="一昨日" />
-
-    <Button
-        android:id="@+id/konshu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:layout_toEndOf="@id/ototoi"
-        android:text="今週" />
-
-    <Button
-        android:id="@+id/senshu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:layout_toEndOf="@id/konshu"
-        android:text="先週" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/kino"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="昨日" />
+        <Button
+            android:id="@+id/ototoi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="一昨日" />
+        <Button
+            android:id="@+id/konshu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="今週" />
+        <Button
+            android:id="@+id/senshu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="先週" />
+        <Button
+            android:id="@+id/sensenshu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="先々週" />
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

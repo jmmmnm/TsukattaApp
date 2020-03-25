@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/button_date"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="20dp"
         android:text="円"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
