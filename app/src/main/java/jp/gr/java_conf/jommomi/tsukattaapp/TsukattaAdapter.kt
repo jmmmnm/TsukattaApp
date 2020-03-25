@@ -61,6 +61,12 @@ class TsukattaAdapter(context: Context) : BaseAdapter() {
         val commentTextView = convertView.findViewById<View>(R.id.commentTextView) as TextView
         commentTextView.text = tsukattaList[position].comment
 
+        val daysTextView = convertView.findViewById<View>(R.id.daysTextView) as TextView
+        daysTextView.text = tsukattaList[position].days
+
+        val weeksTextView = convertView.findViewById<View>(R.id.weeksTextView) as TextView
+        weeksTextView.text = tsukattaList[position].weeks
+
 
         return convertView
 

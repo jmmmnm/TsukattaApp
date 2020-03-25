@@ -29,17 +29,14 @@ class MainActivity : AppCompatActivity() {
     var mYear = calendar.get(Calendar.YEAR)
     var mMonth = calendar.get(Calendar.MONTH)
     var mDate = calendar.get(Calendar.DAY_OF_MONTH)
-    var days:String =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
-    var weeks:String = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
+    var mDays:String =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
+    var mWeeks:String = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        Log.d("kotlintest","weeks"+weeks)
-
 
         fab.setOnClickListener { view ->
             val intent = Intent(this@MainActivity, InputActivity::class.java)
@@ -117,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun reTitle() {
 
-        var kyoTsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo("days", days).findAll()
+        var kyoTsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo("days", mDays).findAll()
         var kyoTsukattaArray: Array<Tsukatta>?
         kyoTsukattaArray = kyoTsukattaRealmResults.toTypedArray()
         var kyoTsukatta:Int=0
@@ -125,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         for(i in kyoTsukattaArray.indices){
             kyoTsukatta=kyoTsukatta+kyoTsukattaArray[i].price
         }
-        supportActionBar?.title = "きょうは "+kyoTsukatta+"円つかった"
+        supportActionBar?.title = "今日は "+kyoTsukatta+"円つかった"
     }
 
     override fun onDestroy() {

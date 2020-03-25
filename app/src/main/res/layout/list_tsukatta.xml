@@ -25,32 +25,55 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
-        android:id="@+id/priceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dateTextView"
-        android:layout_toEndOf="@+id/imageView"
-        android:text="price"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <TextView
         android:id="@+id/paymentTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/priceTextView"
+        android:layout_below="@id/dateTextView"
         android:layout_alignParentRight="false"
         android:layout_toEndOf="@id/imageView"
         android:text="payment"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateTextView"
+        android:layout_marginLeft="20dp"
+        android:layout_toEndOf="@id/paymentTextView"
+        android:text="price"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+    <TextView
         android:id="@+id/commentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daysTextView"
+        android:layout_alignParentRight="false"
+        android:layout_toEndOf="@id/imageView"
+        android:text=" comment "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/daysTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/paymentTextView"
         android:layout_alignParentRight="false"
         android:layout_toEndOf="@id/imageView"
-        android:text="comment"
+        android:text=" days "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/weeksTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/paymentTextView"
+        android:layout_alignParentRight="false"
+        android:layout_marginLeft="20dp"
+        android:layout_toEndOf="@id/daysTextView"
+        android:text=" weeks "
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 

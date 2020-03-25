@@ -35,10 +35,12 @@ class InputActivity : AppCompatActivity() {
 
     private var mYear = 0
     private var mMonth = 0
-    private var mDay = 0
+    private var mDate = 0
     private var mHour = 0
     private var mMinute = 0
     private var mComment = ""
+    private var mDays = ""
+    private var mWeeks = ""
     private var mTsukatta: Tsukatta? = null
 
     private val mOnDateClickListener = View.OnClickListener {
@@ -46,10 +48,10 @@ class InputActivity : AppCompatActivity() {
             DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                 mYear = year
                 mMonth = month
-                mDay = dayOfMonth
-                val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
+                mDate = dayOfMonth
+                val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
                 button_date.text = dateString
-            }, mYear, mMonth, mDay)
+            }, mYear, mMonth, mDate)
         datePickerDialog.show()
     }
 
@@ -66,7 +68,7 @@ class InputActivity : AppCompatActivity() {
 
 
 
-    private val payList = arrayOf("id","pasmo","famipay","paypay","d_card","ing_fan")
+    private val payList = arrayOf("id","pasmo","famipay","paypay","d_card","ing_fan","現金")
     private var payStr:String = ""
     private var priStr:String = ""
 
@@ -159,8 +161,8 @@ class InputActivity : AppCompatActivity() {
             finish()
         }
         button_14.setOnClickListener(){
-            payment_text_view.text = "現金"
-            payStr ="現金"
+            payment_text_view.text = payList[6]
+            payStr = payList[6]
         }
         button_15.setOnClickListener(){
             payment_text_view.text = payList[5]
@@ -202,11 +204,14 @@ class InputActivity : AppCompatActivity() {
             val calendar = Calendar.getInstance()
             mYear = calendar.get(Calendar.YEAR)
             mMonth = calendar.get(Calendar.MONTH)
-            mDay = calendar.get(Calendar.DAY_OF_MONTH)
+            mDate = calendar.get(Calendar.DAY_OF_MONTH)
             mHour = calendar.get(Calendar.HOUR_OF_DAY)
             mMinute = calendar.get(Calendar.MINUTE)
+            mDays =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
+            mWeeks = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
 
-            val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
+
+            val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
             val timeString = String.format("%02d", mHour) + ":" + String.format("%02d", mMinute)
 
             button_date.text = dateString
@@ -215,7 +220,7 @@ class InputActivity : AppCompatActivity() {
             // 更新の場合
             supportActionBar?.title = "変更"
             payment_text_view.setText(mTsukatta!!.payment)
-            price_text_view.setText(mTsukatta!!.price.toString()+" 円")
+            price_text_view.setText(mTsukatta!!.price.toString())
 
             val bytes = mTsukatta!!.image
             if (bytes != null && bytes!!.isNotEmpty()) {
@@ -227,11 +232,14 @@ class InputActivity : AppCompatActivity() {
             calendar.time = mTsukatta!!.date
             mYear = calendar.get(Calendar.YEAR)
             mMonth = calendar.get(Calendar.MONTH)
-            mDay = calendar.get(Calendar.DAY_OF_MONTH)
+            mDate = calendar.get(Calendar.DAY_OF_MONTH)
             mHour = calendar.get(Calendar.HOUR_OF_DAY)
             mMinute = calendar.get(Calendar.MINUTE)
+            mDays =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
+            mWeeks = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
 
-            val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
+
+            val dateString = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
             val timeString = String.format("%02d", mHour) + ":" + String.format("%02d", mMinute)
 
             button_date.text = dateString
@@ -267,11 +275,11 @@ class InputActivity : AppCompatActivity() {
 
         mTsukatta!!.payment = payment
         mTsukatta!!.price = price.toInt()
-        val calendar = GregorianCalendar(mYear, mMonth, mDay, mHour, mMinute)
+        val calendar = GregorianCalendar(mYear, mMonth, mDate, mHour, mMinute)
         val date = calendar.time
         mTsukatta!!.date = date
-        mTsukatta!!.days = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
-
+        mTsukatta!!.days = mDays
+        mTsukatta!!.weeks = mWeeks
         mTsukatta!!.comment = mComment
         mTsukatta!!.image = imageV
 
@@ -359,7 +367,7 @@ class InputActivity : AppCompatActivity() {
     }
 
     private fun buttonHyouji() {
-
+        button_14.text = payList[6]
         button_15.text = payList[5]
         button_16.text = payList[4]
         button_17.text = payList[3]
