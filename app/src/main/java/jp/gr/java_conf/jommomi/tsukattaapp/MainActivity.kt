@@ -13,7 +13,7 @@ import android.view.Menu
 import kotlinx.android.synthetic.main.content_input.*
 import java.util.*
 
-const val EXTRA_TSUKATTA = "jp.gr.java_conf.jommomi.tsukattaapp.TASK"
+const val EXTRA_TSUKATTA = "jp.gr.java_conf.jommomi.tsukattaapp.TSUKATTA"
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mRealm: Realm
@@ -40,6 +40,12 @@ class MainActivity : AppCompatActivity() {
 
         fab.setOnClickListener { view ->
             val intent = Intent(this@MainActivity, InputActivity::class.java)
+            startActivity(intent)
+        }
+        kino.setOnClickListener{ view ->
+            val intent = Intent(this@MainActivity, Main2Activity::class.java)
+            intent.type = "text/plain"
+            intent.putExtra(EXTRA_TSUKATTA, "kino")
             startActivity(intent)
         }
 
