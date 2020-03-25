@@ -38,6 +38,7 @@ class InputActivity : AppCompatActivity() {
     private var mDay = 0
     private var mHour = 0
     private var mMinute = 0
+    private var mComment = ""
     private var mTsukatta: Tsukatta? = null
 
     private val mOnDateClickListener = View.OnClickListener {
@@ -144,6 +145,7 @@ class InputActivity : AppCompatActivity() {
             priStr += "0"
         }
         button_11.setOnClickListener(){
+            mComment = comment_text_view.text.toString()
             addTsukatta()
             finish()
         }
@@ -268,7 +270,9 @@ class InputActivity : AppCompatActivity() {
         val calendar = GregorianCalendar(mYear, mMonth, mDay, mHour, mMinute)
         val date = calendar.time
         mTsukatta!!.date = date
-        mTsukatta!!.day = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
+        mTsukatta!!.days = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDay)
+
+        mTsukatta!!.comment = mComment
         mTsukatta!!.image = imageV
 
         realm.copyToRealmOrUpdate(mTsukatta!!)

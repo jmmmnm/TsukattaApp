@@ -58,6 +58,9 @@ class TsukattaAdapter(context: Context) : BaseAdapter() {
             imageView.setImageBitmap(image)
         }
 
+        val commentTextView = convertView.findViewById<View>(R.id.commentTextView) as TextView
+        commentTextView.text = tsukattaList[position].comment
+
 
         return convertView
 
