@@ -186,7 +186,8 @@
         android:layout_height="64dp"
         android:layout_alignTop="@id/button_10"
         android:layout_toEndOf="@id/button_12"
-        android:text="戻る" />
+        android:text="13"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/button_14"

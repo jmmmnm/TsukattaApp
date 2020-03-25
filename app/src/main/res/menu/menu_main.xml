@@ -32,5 +32,15 @@
         android:orderInCategory="600"
         android:title="ingfan"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/payList_7"
+        android:orderInCategory="700"
+        android:title="goldpoint"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/payList_8"
+        android:orderInCategory="800"
+        android:title="cash"
+        app:showAsAction="never" />
 
 </menu>

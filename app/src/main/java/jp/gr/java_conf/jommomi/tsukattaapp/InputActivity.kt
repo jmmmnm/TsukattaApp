@@ -68,7 +68,7 @@ class InputActivity : AppCompatActivity() {
 
 
 
-    private val payList = arrayOf("id","pasmo","famipay","paypay","d_card","ing_fan","現金")
+    private val payList = arrayOf("id","pasmo","famipay","paypay","dcard","ingfan","goldpoint","cash")
     private var payStr:String = ""
     private var priStr:String = ""
 
@@ -158,7 +158,8 @@ class InputActivity : AppCompatActivity() {
             price_text_view.text=""
         }
         button_13.setOnClickListener(){
-            finish()
+            payment_text_view.text = payList[7]
+            payStr = payList[7]
         }
         button_14.setOnClickListener(){
             payment_text_view.text = payList[6]
@@ -365,6 +366,7 @@ class InputActivity : AppCompatActivity() {
     }
 
     private fun buttonHyouji() {
+        button_13.text = payList[7]
         button_14.text = payList[6]
         button_15.text = payList[5]
         button_16.text = payList[4]
