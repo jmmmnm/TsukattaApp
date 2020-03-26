@@ -94,7 +94,6 @@ class Main2Activity : AppCompatActivity() {
 
         }
 
-
         // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
         val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo("days", "2020-03-25").findAll()
 
