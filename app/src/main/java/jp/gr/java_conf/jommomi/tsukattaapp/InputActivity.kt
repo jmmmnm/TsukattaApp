@@ -219,6 +219,7 @@ class InputActivity : AppCompatActivity() {
             supportActionBar?.title = "変更"
             payment_text_view.setText(mTsukatta!!.payment)
             price_text_view.setText(mTsukatta!!.price.toString())
+            comment_text_view.setText(mTsukatta!!.comment)
 
             val bytes = mTsukatta!!.image
             if (bytes != null && bytes!!.isNotEmpty()) {
@@ -241,7 +242,6 @@ class InputActivity : AppCompatActivity() {
             button_times.text = timeString
 
             imageV=bytes
-
         }
     }
 
