@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
             mDays = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate-1)
             intent.type = "text/plain"
-            intent.putExtra("value1", "kino")
+            intent.putExtra("value1", "days")
             intent.putExtra("value2",mDays)
             startActivity(intent)
         }
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
             mDays = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate-2)
             intent.type = "text/plain"
-            intent.putExtra("value1", "ototoi")
+            intent.putExtra("value1", "days")
             intent.putExtra("value2",mDays)
             startActivity(intent)
         }
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
             mWeeks= mYear.toString()+ "-" + (calendar.get(Calendar.WEEK_OF_YEAR)-1).toString()
             intent.type = "text/plain"
-            intent.putExtra("value1", "senshu")
+            intent.putExtra("value1", "weeks")
             intent.putExtra("value2",mWeeks)
             startActivity(intent)
         }
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
             mWeeks= mYear.toString()+ "-" + (calendar.get(Calendar.WEEK_OF_YEAR)-2).toString()
             intent.type = "text/plain"
-            intent.putExtra("value1", "sensenshu")
+            intent.putExtra("value1", "weeks")
             intent.putExtra("value2",mWeeks)
             startActivity(intent)
         }
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
             mMonths = mYear.toString()+ "-" + (calendar.get(Calendar.MONTH)+1).toString()
             intent.type = "text/plain"
-            intent.putExtra("value1", "kongetsu")
+            intent.putExtra("value1", "months")
             intent.putExtra("value2",mMonths)
             startActivity(intent)
         }
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
             mMonths = mYear.toString()+ "-" +calendar.get(Calendar.MONTH).toString()
             intent.type = "text/plain"
-            intent.putExtra("value1", "sengetsu")
+            intent.putExtra("value1", "months")
             intent.putExtra("value2",mMonths)
             startActivity(intent)
         }

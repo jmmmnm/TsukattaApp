@@ -22,14 +22,6 @@ class Main2Activity : AppCompatActivity() {
     private  lateinit var mTsukattaAdaper: TsukattaAdapter
 
 
-    var calendar = Calendar.getInstance()
-    var mYear = calendar.get(Calendar.YEAR)
-    var mMonth = calendar.get(Calendar.MONTH)
-    var mDate = calendar.get(Calendar.DAY_OF_MONTH)
-    var mDays:String =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
-    var mWeeks:String = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
@@ -92,7 +84,7 @@ class Main2Activity : AppCompatActivity() {
 
 
         // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
-        val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo("days", value2).findAll()
+        val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo(value1, value2).findAll()
 
         // 上記の結果を、TsukattaList としてセットする
         mTsukattaAdaper.tsukattaList = mRealm.copyFromRealm(tsukattaRealmResults)
