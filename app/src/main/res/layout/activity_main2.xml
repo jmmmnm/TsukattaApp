@@ -6,7 +6,6 @@
     tools:context=".Main2Activity">
 
     <ListView
-        android:layout_marginTop="60dp"
         android:id="@+id/listView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

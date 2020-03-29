@@ -12,6 +12,7 @@ open class Tsukatta : RealmObject(),Serializable {
     var date: Date = Date()     //日時
     var days:String = ""
     var weeks:String = ""
+    var months:String = ""
     var price: Int = 0          //値段
     var payment: String = ""    //支払い
     var comment: String = ""

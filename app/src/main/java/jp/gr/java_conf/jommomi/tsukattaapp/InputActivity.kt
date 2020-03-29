@@ -41,6 +41,7 @@ class InputActivity : AppCompatActivity() {
     private var mComment = ""
     private var mDays = ""
     private var mWeeks = ""
+    private var mMonths = ""
     private var mTsukatta: Tsukatta? = null
 
     private val mOnDateClickListener = View.OnClickListener {
@@ -276,9 +277,11 @@ class InputActivity : AppCompatActivity() {
 
         mDays =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
         mWeeks = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
+        mMonths = mYear.toString()+ "-" + (calendar.get(Calendar.MONTH)+1).toString()
 
         mTsukatta!!.days = mDays
         mTsukatta!!.weeks = mWeeks
+        mTsukatta!!.months = mMonths
         mTsukatta!!.comment = mComment
         mTsukatta!!.image = imageV
 
