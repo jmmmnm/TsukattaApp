@@ -94,7 +94,20 @@ class Main2Activity : AppCompatActivity() {
 
         // 表示を更新するために、アダプターにデータが変更されたことを知らせる
         mTsukattaAdaper.notifyDataSetChanged()
+
+
+
+        var tempTsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo(value1, value2).findAll()
+        var tempTsukattaArray: Array<Tsukatta>?
+        tempTsukattaArray = tempTsukattaRealmResults.toTypedArray()
+
+        var tempTsukatta:Int=0
+        for(i in tempTsukattaArray.indices) {
+            tempTsukatta = tempTsukatta + tempTsukattaArray[i].price
+        }
+        supportActionBar?.title = ""+tempTsukatta + "円つかった"
     }
+
 
 
 

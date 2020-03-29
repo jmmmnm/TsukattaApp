@@ -168,12 +168,13 @@ class MainActivity : AppCompatActivity() {
         var kyoTsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo("days", mDays).findAll()
         var kyoTsukattaArray: Array<Tsukatta>?
         kyoTsukattaArray = kyoTsukattaRealmResults.toTypedArray()
-        var kyoTsukatta:Int=0
 
+        var kyoTsukatta:Int=0
         for(i in kyoTsukattaArray.indices){
             kyoTsukatta=kyoTsukatta+kyoTsukattaArray[i].price
         }
-        supportActionBar?.title = "今日は "+kyoTsukatta+"円つかった"
+
+        supportActionBar?.title = "今日は "+kyoTsukatta + "円つかった"
     }
 
     override fun onDestroy() {
