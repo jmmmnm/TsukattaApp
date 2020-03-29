@@ -88,7 +88,7 @@ class Main2Activity : AppCompatActivity() {
         val value1 = intent.getStringExtra("value1")
         val value2 = intent.getStringExtra("value2")
 
-        Log.d("kotlintest", "v1 + v2 = " + value1 + value2)
+        Log.d("kotlintest", "v1 + v2 = " + value1 +"  "+ value2)
 
 
         // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
