@@ -29,11 +29,10 @@ class MainActivity : AppCompatActivity() {
     var mYear = calendar.get(Calendar.YEAR)
     var mMonth = calendar.get(Calendar.MONTH)
     var mDate = calendar.get(Calendar.DAY_OF_MONTH)
+
     var mDays:String =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
     var mWeeks:String = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
-
-    var mkino:String =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate-1)
-
+    var mMonths:String = mYear.toString()+ "-" +calendar.get(Calendar.MONTH).toString()
 
 
 
@@ -45,10 +44,53 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, InputActivity::class.java)
             startActivity(intent)
         }
+        //
         kino.setOnClickListener{ view ->
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
+            mDays = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate-1)
             intent.type = "text/plain"
-            intent.putExtra(EXTRA_TSUKATTA, mkino)
+            intent.putExtra("value1", "kino")
+            intent.putExtra("value2",mDays)
+            startActivity(intent)
+        }
+        ototoi.setOnClickListener{ view ->
+            val intent = Intent(this@MainActivity, Main2Activity::class.java)
+            mDays = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate-2)
+            intent.type = "text/plain"
+            intent.putExtra("value1", "ototoi")
+            intent.putExtra("value2",mDays)
+            startActivity(intent)
+        }
+        senshu.setOnClickListener{ view ->
+            val intent = Intent(this@MainActivity, Main2Activity::class.java)
+            mWeeks= mYear.toString()+ "-" + (calendar.get(Calendar.WEEK_OF_YEAR)-1).toString()
+            intent.type = "text/plain"
+            intent.putExtra("value1", "senshu")
+            intent.putExtra("value2",mWeeks)
+            startActivity(intent)
+        }
+        sensenshu.setOnClickListener{ view ->
+            val intent = Intent(this@MainActivity, Main2Activity::class.java)
+            mWeeks= mYear.toString()+ "-" + (calendar.get(Calendar.WEEK_OF_YEAR)-2).toString()
+            intent.type = "text/plain"
+            intent.putExtra("value1", "sensenshu")
+            intent.putExtra("value2",mWeeks)
+            startActivity(intent)
+        }
+        kongetsu.setOnClickListener{ view ->
+            val intent = Intent(this@MainActivity, Main2Activity::class.java)
+            mMonths = mYear.toString()+ "-" + (calendar.get(Calendar.MONTH)+1).toString()
+            intent.type = "text/plain"
+            intent.putExtra("value1", "kongetsu")
+            intent.putExtra("value2",mMonths)
+            startActivity(intent)
+        }
+        sengetsu.setOnClickListener{ view ->
+            val intent = Intent(this@MainActivity, Main2Activity::class.java)
+            mMonths = mYear.toString()+ "-" +calendar.get(Calendar.MONTH).toString()
+            intent.type = "text/plain"
+            intent.putExtra("value1", "sengetsu")
+            intent.putExtra("value2",mMonths)
             startActivity(intent)
         }
 
