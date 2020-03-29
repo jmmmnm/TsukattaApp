@@ -32,6 +32,9 @@ class MainActivity : AppCompatActivity() {
     var mDays:String =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate)
     var mWeeks:String = mYear.toString()+ "-" + calendar.get(Calendar.WEEK_OF_YEAR).toString()
 
+    var mkino:String =mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate-1)
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         kino.setOnClickListener{ view ->
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
             intent.type = "text/plain"
-            intent.putExtra(EXTRA_TSUKATTA, "kino")
+            intent.putExtra(EXTRA_TSUKATTA, mkino)
             startActivity(intent)
         }
 

@@ -89,13 +89,9 @@ class Main2Activity : AppCompatActivity() {
 
         Log.d("kotlintest", "TSUKATTA = " + value2)
 
-        var shibori:String = ""
-        if(value2=="kino"){
-
-        }
 
         // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
-        val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo("days", "2020-03-25").findAll()
+        val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo("days", value2).findAll()
 
         // 上記の結果を、TsukattaList としてセットする
         mTsukattaAdaper.tsukattaList = mRealm.copyFromRealm(tsukattaRealmResults)
