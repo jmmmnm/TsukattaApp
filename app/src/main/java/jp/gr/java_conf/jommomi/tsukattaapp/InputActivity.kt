@@ -202,7 +202,7 @@ class InputActivity : AppCompatActivity() {
 
         if (mTsukatta == null) {
             // 新規作成の場合
-            supportActionBar?.title = "追加"
+            supportActionBar?.title = "新規追加"
             val calendar = Calendar.getInstance()
             mYear = calendar.get(Calendar.YEAR)
             mMonth = calendar.get(Calendar.MONTH)

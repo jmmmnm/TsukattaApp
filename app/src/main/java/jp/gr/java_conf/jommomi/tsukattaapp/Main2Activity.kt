@@ -79,12 +79,11 @@ class Main2Activity : AppCompatActivity() {
 
         val value1 = intent.getStringExtra("value1")
         val value2 = intent.getStringExtra("value2")
+        val value3 = intent.getStringExtra("value3")
 
         Log.d("kotlintest", "v1 + v2 = " + value1 +"  "+ value2)
 
-
-        // Realmデータベースから、「全てのデータを取得して新しい日時順に並べた結果」を取得
-        val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo(value1, value2).findAll()
+        val tsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo(value2, value3).findAll().sort("date", Sort.DESCENDING)
 
         // 上記の結果を、TsukattaList としてセットする
         mTsukattaAdaper.tsukattaList = mRealm.copyFromRealm(tsukattaRealmResults)
@@ -97,7 +96,7 @@ class Main2Activity : AppCompatActivity() {
 
 
 
-        var tempTsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo(value1, value2).findAll()
+        var tempTsukattaRealmResults = mRealm.where(Tsukatta::class.java).equalTo(value2, value3).findAll()
         var tempTsukattaArray: Array<Tsukatta>?
         tempTsukattaArray = tempTsukattaRealmResults.toTypedArray()
 
@@ -105,7 +104,7 @@ class Main2Activity : AppCompatActivity() {
         for(i in tempTsukattaArray.indices) {
             tempTsukatta = tempTsukatta + tempTsukattaArray[i].price
         }
-        supportActionBar?.title = ""+tempTsukatta + "円つかった"
+        supportActionBar?.title = value1+"は "+tempTsukatta + "円つかった"
     }
 
 

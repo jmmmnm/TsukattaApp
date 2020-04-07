@@ -19,8 +19,8 @@
             android:id="@+id/kino"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="昨日" />
+            android:layout_weight="1.5"
+            android:text="きのう" />
         <Button
             android:id="@+id/ototoi"
             android:layout_width="0dp"
@@ -28,11 +28,17 @@
             android:layout_weight="1"
             android:text="→" />
         <Button
+            android:id="@+id/konshu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="今週" />
+        <Button
             android:id="@+id/senshu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="先週" />
+            android:text="→" />
         <Button
             android:id="@+id/sensenshu"
             android:layout_width="0dp"
@@ -43,7 +49,7 @@
             android:id="@+id/kongetsu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:text="今月" />
         <Button
             android:id="@+id/sengetsu"
