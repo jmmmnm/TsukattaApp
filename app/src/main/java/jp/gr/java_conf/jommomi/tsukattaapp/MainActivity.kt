@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
             mDays = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate-2)
             intent.type = "text/plain"
-            intent.putExtra("value1","おととい")
+            intent.putExtra("value1","一昨日")
             intent.putExtra("value2", "days")
             intent.putExtra("value3",mDays)
             startActivity(intent)
@@ -130,9 +130,27 @@ class MainActivity : AppCompatActivity() {
             // 入力・編集する画面に遷移させる
             val tsukatta = parent.adapter.getItem(position) as Tsukatta
 
-            val intent = Intent(this@MainActivity, InputActivity::class.java)
-            intent.putExtra(EXTRA_TSUKATTA, tsukatta.id)
-            startActivity(intent)
+            // ダイアログを表示する
+            val builder = AlertDialog.Builder(this@MainActivity)
+
+            builder.setTitle("変更")
+            builder.setMessage(tsukatta.payment +"  "+tsukatta.price+"円を変更しますか")
+
+
+            builder.setPositiveButton("OK"){_, _ ->
+                val results = mRealm.where(Tsukatta::class.java).equalTo("id", tsukatta.id).findAll()
+
+                val intent = Intent(this@MainActivity, InputActivity::class.java)
+                intent.putExtra(EXTRA_TSUKATTA, tsukatta.id)
+                startActivity(intent)
+            }
+
+            builder.setNegativeButton("CANCEL", null)
+
+            val dialog = builder.create()
+            dialog.show()
+
+            true
 
         }
 
@@ -145,7 +163,7 @@ class MainActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this@MainActivity)
 
             builder.setTitle("削除")
-            builder.setMessage(tsukatta.payment + "を削除しますか")
+            builder.setMessage(tsukatta.payment +"  "+tsukatta.price+"円を削除しますか")
 
             builder.setPositiveButton("OK"){_, _ ->
                 val results = mRealm.where(Tsukatta::class.java).equalTo("id", tsukatta.id).findAll()
