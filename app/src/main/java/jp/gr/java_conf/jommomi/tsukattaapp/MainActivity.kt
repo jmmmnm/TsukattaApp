@@ -12,6 +12,14 @@ import android.util.Log
 import android.view.Menu
 import kotlinx.android.synthetic.main.content_input.*
 import java.util.*
+import io.realm.RealmConfiguration
+import android.support.v4.app.SupportActivity
+import android.support.v4.app.SupportActivity.ExtraData
+import android.support.v4.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.R.attr.name
+
+
 
 const val EXTRA_TSUKATTA = "jp.gr.java_conf.jommomi.tsukattaapp.TSUKATTA"
 
@@ -40,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         fab.setOnClickListener { view ->
             val intent = Intent(this@MainActivity, InputActivity::class.java)
             startActivity(intent)
@@ -49,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Main2Activity::class.java)
             mDays = mYear.toString() + "-" + String.format("%02d", mMonth + 1) + "-" + String.format("%02d", mDate-1)
             intent.type = "text/plain"
-            intent.putExtra("value1","きのう")
+            intent.putExtra("value1","昨日")
             intent.putExtra("value2", "days")
             intent.putExtra("value3",mDays)
             startActivity(intent)
@@ -120,9 +129,11 @@ class MainActivity : AppCompatActivity() {
         listView1.setOnItemClickListener { parent, _, position, _ ->
             // 入力・編集する画面に遷移させる
             val tsukatta = parent.adapter.getItem(position) as Tsukatta
+
             val intent = Intent(this@MainActivity, InputActivity::class.java)
             intent.putExtra(EXTRA_TSUKATTA, tsukatta.id)
             startActivity(intent)
+
         }
 
         // ListViewを長押ししたときの処理
